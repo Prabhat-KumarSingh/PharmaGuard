@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/pharmacogenomics';
+    const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://pprabhatsingh55555_db_user:Pks@1234@cluster0.z4vywtr.mongodb.net/?appName=Cluster0';
     
     await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
@@ -18,3 +18,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
