@@ -55,7 +55,7 @@ export const getAllResults = async (page = 1, limit = 20) => {
 
 export const healthCheck = async () => {
   try {
-    const response = await api.get('health');
+    const response = await api.get('/health');
     return response.data;
   } catch (error) {
     throw error.response?.data || error;
@@ -63,6 +63,7 @@ export const healthCheck = async () => {
 };
 
 export default api;
+
 
 
 
