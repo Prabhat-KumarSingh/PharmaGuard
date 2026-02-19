@@ -1,0 +1,20 @@
+##fileformat=VCFv4.2
+##reference=GRCh37
+##contig=<ID=1,length=249250621>
+##contig=<ID=6,length=171115067>
+##contig=<ID=10,length=135534747>
+##contig=<ID=12,length=133851895>
+##contig=<ID=22,length=51304566>
+##INFO=<ID=GENE,Number=1,Type=String,Description="Gene symbol">
+##INFO=<ID=STAR,Number=1,Type=String,Description="Star allele assignment">
+##INFO=<ID=RS,Number=1,Type=String,Description="dbSNP ID">
+##INFO=<ID=IMPACT,Number=1,Type=String,Description="Functional impact">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	NORMAL
+22	42127941	rs1065852	C	T	100	PASS	GENE=CYP2D6;STAR=4;RS=rs1065852;IMPACT=Decreased_Function	GT	0/1
+22	42130692	rs28365072	G	A	100	PASS	GENE=CYP2D6;STAR=4;RS=rs28365072;IMPACT=Decreased_Function	GT	0/1
+10	94761900	rs4244285	G	A	100	PASS	GENE=CYP2C19;STAR=2;RS=rs4244285;IMPACT=Loss_of_Function	GT	1/1
+10	94938996	rs1799853	A	C	100	PASS	GENE=CYP2C9;STAR=2;RS=rs1799853;IMPACT=Decreased_Function	GT	0/1
+12	21566392	rs4149056	C	T	100	PASS	GENE=SLCO1B1;STAR=5;RS=rs4149056;IMPACT=Decreased_Function	GT	0/1
+6	18131118	rs1800462	A	G	100	PASS	GENE=TPMT;STAR=3;RS=rs1800462;IMPACT=Loss_of_Function	GT	0/1
+1	97915614	rs3918290	G	A	100	PASS	GENE=DPYD;STAR=2A;RS=rs3918290;IMPACT=Decreased_Function	GT	0/1
