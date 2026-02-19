@@ -1,33 +1,48 @@
+// routes/analysis.js
 const express = require('express');
-const upload = require('../middleware/fileUpload');
-const AnalysisController = require('../controllers/analysisController');
-
 const router = express.Router();
+const upload = require('../middleware/upload');
+const VCFFile = require('../models/VCFFile');
 
-/**
- * POST /api/analysis/analyze
- * Analyze patient VCF and predict drug risks
- * Body: drug (string, comma-separated for multiple drugs)
- * File: VCF file
- */
-router.post('/analyze', upload.single('vcf_file'), AnalysisController.analyzePatient);
+// Upload VCF and save to MongoDB
+router.post('/analyze', upload.single('vcf_file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No file uploaded' });
+    }
 
-/**
- * GET /api/analysis/:id
- * Get analysis result by ID
- */
-router.get('/:id', AnalysisController.getAnalysisResult);
+    const newVCF = new VCFFile({
+      filename: req.file.originalname,
+      originalname: req.file.originalname,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+      data: req.file.buffer, // file content in memory
+    });
 
-/**
- * GET /api/analysis/patient/:patientId
- * Get all analysis results for a patient
- */
-router.get('/patient/:patientId', AnalysisController.getPatientResults);
+    await newVCF.save();
 
-/**
- * GET /api/analysis
- * Get all analysis results with pagination
- */
-router.get('/', AnalysisController.getAllResults);
+    res.json({
+      success: true,
+      message: 'VCF uploaded successfully',
+      fileId: newVCF._id,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: 'Server error', error: err.message });
+  }
+});
+
+// Fetch a VCF file by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const file = await VCFFile.findById(req.params.id);
+    if (!file) return res.status(404).json({ success: false, message: 'File not found' });
+
+    res.set('Content-Type', file.mimetype);
+    res.send(file.data);
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error', error: err.message });
+  }
+});
 
 module.exports = router;
