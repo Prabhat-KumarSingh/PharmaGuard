@@ -33,21 +33,7 @@ const ResultsDisplay = ({ results }) => {
     });
   };
 
-  const getRiskColor = (label) => {
-    switch (label) {
-      case 'Safe':
-        return '#27ae60';
-      case 'Adjust Dosage':
-        return '#f39c12';
-      case 'Toxic':
-      case 'Ineffective':
-        return '#e74c3c';
-      case 'Monitor Needed':
-        return '#f39c12';
-      default:
-        return '#95a5a6';
-    }
-  };
+
 
   return (
     <div className="results-display">
@@ -254,3 +240,4 @@ const ResultsDisplay = ({ results }) => {
 };
 
 export default ResultsDisplay;
+
