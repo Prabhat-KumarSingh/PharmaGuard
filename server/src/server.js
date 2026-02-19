@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://pharmacogenomicriskpredictionsystem.netlify.app/',
+  origin: process.env.CORS_ORIGIN || 'https://pharmacogenomicriskpredictionsystem.netlify.app',
   credentials: true
 }));
 
@@ -71,4 +71,5 @@ process.on('SIGTERM', () => {
 });
 
 module.exports = app;
+
 
