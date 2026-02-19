@@ -1,0 +1,10 @@
+.results-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.results-page h1 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
